@@ -1,2 +1,2 @@
 python project
-blog
+hardrubic blog
