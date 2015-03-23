@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
-# static file
+# 开发阶段直接使用static files
 if settings.DEBUG:
     urlpatterns += patterns('',
         url(r'^static/(?P<path>.*)$','django.views.static.serve',
