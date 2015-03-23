@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta name="baidu-site-verification" content="Ex8Xngyke9" />
+	<title>Hardrubic博客登陆</title>
+	<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon" />
+
+	<link rel="stylesheet" href="/static/styles/globalCss.css" type="text/css" />
+	<link rel="stylesheet" href="/static/styles/loginCss.css" type="text/css" />
+	<script type="text/javascript" src="/static/scripts/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/scripts/biz/Login.js"></script>
+</head>
+
+<body>
+	<div class="message warning">
+		<div class="inset">
+			<div class="login-head">
+				<h1>Hardrubic博客</h1>
+				<div class="alert-close"> </div>
+			</div>
+		</div>
+		<form action="/blog/login/login_in/" name="loginform" id="loginform"
+			  method="post">
+			<li>
+				<input type="text" class="text" id="username" name="username"
+					   value="账号"
+					onfocus="this.value = '';$('.error').remove();"
+					   onblur="if (this.value == ''){this.value = '账号';}">
+					<a href="#" class="icon user"></a>
+			</li>
+			<div class="clear"> </div>
+			<li>
+				<input type="password" id="password" name="password" value="密码"
+					onfocus="this.value = '';$('.error').remove();"
+					onblur="if (this.value == '') {this.value = 'Password';}">
+				<a href="#" class="icon lock"></a>
+			</li>
+			{% if login_message %}
+				<p class="error">
+					{{login_message}}
+				</p>
+			{% endif %}
+			<div class="submit">
+				<input type="submit" value="登陆" >
+				<div class="clear"></div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

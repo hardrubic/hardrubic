@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	{%include 'public/public.html'%}
+
+	<title>博客管理</title>
+	<link rel="stylesheet" href="/static/styles/indexCss.css" type="text/css" />
+	<link rel="stylesheet" href="/static/styles/managerCss.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+{%include 'manager/manager_header.html'%}
+
+	<div id="content">
+	{%include 'manager/manager_left.html'%}
+		<div class="article_article">
+			<input type="hidden" id="articleid" name="articleid" value="{{ariticle_id}}">
+			{% if ariticle_id %}
+				<h1>{{caption_one}}</h1>
+				<div class="info">
+					<span>文章类别：{{cate_name_one}}</span>
+					<span>阅读次数：{{degree_one}}</span>
+					<span>发表时间：{{times_one|date:'Y'}}-{{times_one|date:'m'}}-{{times_one|date:'d'}}</span>
+				</div>
+				<div style="padding-left:10px">
+					<label for="article_status">文章状态：</label>
+					<select id="article_status" gcode="ARTICLE_STATUS" class="select_class" value="{{status_one}}">
+						<option value="0">编辑</option>	
+						<option value="1">发布</option>	
+						<option value="2">作废</option>	
+					</select>
+				</div>
+			{% else %}
+				<div id="article_info" class="article_info">
+					标题：<input id="caption" type="text"/><br/>
+					分类：<input id="catename" type="text"/><br/>
+				</div>
+			{% endif %}
+			<div class="zoom">
+				<textarea name="editor_shorotContent" id="editor_shorotContent" rows="10" cols="80">
+					{{short_content_one}}
+				</textarea>
+				<textarea name="editor_content" id="editor_content" rows="10" cols="80">
+					{{content_one}}
+				</textarea>
+			</div>
+			<div class="save_article">
+				<a href="javascript:void(0);" onclick="saveArticle()">保存</a>
+				<a href="/blog/manager/">返回</a>
+			</div>
+		</div>
+	</div>
+  
+{%include 'main/bottom.html'%}
+
+<script type="text/javascript" src="/static/scripts/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/static/scripts/jquery/jquery-my.js"></script>
+<script type="text/javascript" src="/static/scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/scripts/util/public.js"></script>
+<script type="text/javascript" src="/static/scripts/util/JSONSubmit.js"></script>
+<script type="text/javascript" src="/static/scripts/biz/manager_blog.js"></script>
+<script type="text/javascript" src="/static/scripts/jquery-json/jquery-json.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		initCKEditor();	
+	});
+</script>
+	
+</div>
+</body>
+</html>
+
+
+
+	
