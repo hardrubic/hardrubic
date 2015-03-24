@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	{%include 'public/public.html'%}
+	<title>Hardrubic博客</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}styles/indexCss.css" type="text/css" />
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/jquery/jquery-my.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/biz/Login.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/util/Public.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/util/JSONSubmit.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/jquery-json/jquery-json.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}scripts/jquery-cookie/jquery.cookie.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			showMainContent('/blog/article_list/');
+		});
+	</script>
+	
+</head>
+
+<body>
+<div id="container">
+{%include 'main/header.html'%}
+
+	<div id="content">
+		{%include 'category/cate_left.html'%}
+		<div id="main_content">
+		</div>
+	</div>
+  
+{%include 'main/bottom.html'%}
+</div>
+</body>
+</html>

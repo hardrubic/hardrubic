@@ -1,0 +1,201 @@
+@charset "utf-8";
+
+/*@import url(reset.css);*/
+
+body {
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Droid Sans', sans-serif;
+	font-size:100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+/*系统登陆框*/
+.message.warning{
+	background: rgba(255, 255, 255, 0.33);
+	-moz-box-shadow: 0 0 0 3px rgba(56, 41, 32, 0.25);
+	-webkit-box-shadow: 0 0 0 3px rgba(56, 41, 32, 0.25);
+	box-shadow: 0 0 0 3px rgba(56, 41, 32, 0.25);
+	margin:9% auto 0;
+	width: 26%;
+}
+.message {
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.1) inset, 0 1px 2px rgba(0,0,0,0.4);
+	position: relative;
+}
+.warning {
+	text-align: center;
+	margin: 14% auto;
+	width: 280px;
+	background: rgba(82, 97, 97, 0.68);
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+}
+
+.login-head {
+	padding: 2em 0;
+	background: #000000;
+	position:relative;
+}
+.login-head h1 {
+	font-family:微软雅黑;
+	color: #fff;
+	font-size: 1.5em;
+	text-align: left;
+	margin: 0 23px;
+}
+form {
+	padding: 3em 2em;
+	background: #F2F2F2;
+
+}
+form li{
+	border: 2px ridge rgba(187, 185, 189, 0.11);
+	border-radius: 0.3em;
+	-webkit-border-radius:0.3em;
+	-moz-border-radius:0.3em;
+	-o-border-radius:0.3em;
+	list-style:none;
+	margin-bottom:12px;
+	background:#F0EEF0;
+}
+form .error{
+	color: red !important;
+}
+.errorMessage {
+	clear: both;
+	color: red !important;
+	padding-left: 0px;
+	padding-top: 10px;
+}
+.icon{
+	background:url(/static/images/login/login_icons.png) no-repeat 0px 0px;
+	height:30px;
+	width:30px;
+	display: block;
+	float: right;
+	margin: 12px 9px 9px 0px;
+}
+.user{
+	background: url(/static/images/login/login_icons.png) no-repeat 7px 1px;
+
+}
+.lock{
+	background: url(/static/images/login/login_icons.png) no-repeat -22px 1px;
+}
+input[type="text"], input[type="password"] {
+	font-family: 'Droid Sans', sans-serif;
+	width:70%;
+	padding: 0.5em 2em 0.5em 1em;
+	color: #000000;
+	font-size:20px;
+	outline: none;
+	background: none;
+	border:none;
+}
+input[type="text"]:hover, input[type="password"]:hover{
+	color: #000000;
+}
+.submit{
+	padding-top:3em;
+}
+input[type="submit"] {
+	color: #fff;
+	cursor: pointer;
+	font-weight: 900;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+	padding: 12px 0px;
+	width: 35%;
+	font-size: 18px;
+	background: #000000;
+	border:2px solid #000000;
+	border-radius: 0.5em;
+	-webkit-border-radius:0.5em;
+	-moz-border-radius:0.5em;
+	-o-border-radius:0.5em;
+}
+input[type="submit"]:hover {
+	background: #fff;
+	color: #000000;
+	border:2px solid #000000;
+}
+
+/* 根据不同宽度显示不同CSS */
+@media (max-width:1440px){
+.message.warning {
+		margin: 11% auto 0;
+		width: 30%;
+	}
+}
+@media (max-width:1366px){
+	.message.warning{
+		margin: 7% auto 0;
+		width: 35%;
+	}
+}
+@media (max-width:1280px){
+	.message.warning {
+		margin: 7% auto 0;
+		width: 33%;
+	}
+}
+@media (max-width:1024px){
+	.message.warning{
+		margin: 12% auto 0;
+		width: 47%;
+	}
+}
+@media (max-width:768px){
+	.message.warning{
+		margin: 13% auto 0;
+		width: 65%;
+	}
+}
+@media (max-width:640px){
+	.message.warning{
+		margin: 13% auto 0;
+		width: 67%;
+	}
+}
+@media (max-width:480px){
+	.message.warning  {
+		margin: 15% auto 0;
+		width:90%;
+	}
+}
+@media (max-width:320px){
+	.message.warning  {
+		margin:8% auto 0;
+		width:90%;
+	}
+	.login-head {
+		padding: 1.45em 0;
+	}
+	.login-head h1 {
+		font-size: 1.15em;
+	}
+	.icon {
+		margin: -33px 9px 9px 0px;
+	}
+	input[type="text"], input[type="password"] {
+		font-size: 16px;
+	}
+	form {
+		padding: 1.5em 1.5em;
+	}
+	.submit {
+		padding-top: 0.4em;
+	}
+	input[type="submit"] {
+		float:none;
+		padding: 11px 0px;
+		width: 52%;
+		font-size: 15px;
+	}
+}

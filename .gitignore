@@ -2,3 +2,5 @@
 .project
 *.pyc
 .idea
+problem list.txt
+__pycache__

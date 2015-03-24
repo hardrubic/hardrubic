@@ -1,0 +1,25 @@
+ <div id="sidebar">
+	<h1>关于Hardrubic博客</h1>
+	<div class="boxcont about">
+		<img src="/static/images/dlam.jpg" alt="" width="212" height="318" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		本博客是程序初学者hardrubic作为练习的作品，采用了Python的web框架Django，才疏学浅，欢迎指导
+		<br />
+  	</div>
+	<div class="bottom"></div>
+	
+	<h1>分类</h1>
+	<div class="boxcont">
+		<ul class="article_cate">
+			{% for category in categories %}
+			 	<li>
+			 		<a href="javascript:void(0);" 
+			 			onclick="showMainContent('/blog/manager/manager_article_list/?categoryid={{category.cateid}}')">
+			 			{{category.cateName}}({{category.cateNum}})
+			 		</a>
+			 	</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="bottom"></div>
+</div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta name="baidu-site-verification" content="Ex8Xngyke9" />
+	<title>safetest</title>
+		
+	<script type="text/javascript" src="/static/scripts/jquery-1.10.0.js"></script>
+	<script type="text/javascript" src="/static/scripts/jquery-cookie/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/static/scripts/JSONSubmit.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+
+		});
+		
+		function showURL(){
+			var url = $('#inputURL').val();
+			var html = "<a href='"+url+"'>testurl</a>";
+			console.info(html);
+			$('#showURL').html(html);
+		}
+		
+	</script>
+	
+</head>
+
+<body>
+	<form style="padding:10px;display:inline" action="/safetest/xss/" method="get">
+		<button type="submit">返回</button>
+	</form>
+	<form style="padding:10px;display:inline" action="/safetest/xss/" method="get">
+		<button type="submit">刷新</button>
+	</form>
+	<br/><br/>
+		
+	<fieldset>
+   		<legend><strong>最简单XSS</strong></legend>
+		<form style="padding:10px" action="/safetest/xss/simpleXss" method="get">
+			<input type="checkbox" id="htmlCheck" name="checkflag">HTML转义</input><br/>
+			<label for="inputMsg">输入值</label>
+			<input type="text" id="inputMsg" name="param" style = "width:300px;"></input>
+			<button type="submit">确定</button><br/>
+			<label for="inputMsg">展示输入值：</label>
+			{% if checkflag %}
+				<span id="showMsg">{{param}}</span>
+			{% else %}
+				<span id="showMsg">{{param|safe}}</span>
+			{% endif %}
+		</form>
+		<span>说明：HTML注入，录入&lt;script src=/static/scripts/xss.js&gt;&lt;/script&gt;，使用HTML转义可以避免</span>
+	</fieldset>
+	
+	<fieldset>
+	<legend><strong>Hijack Cookie</strong></legend>
+		<form style="padding:10px 0px 0px 10px" action="/safetest/xss/loginIn" method="get">
+			<label for="username">用户名</label>
+			<input type="text" id="username" name="username" style = "width:300px;"></input><br/>
+			<label for="inputURL">密码</label>
+			<input type="password" id="password" name="password" style = "width:300px;"></input><br/>
+			<button type="sumbit">登陆</button>
+		</form>
+		<form style="padding:0px 0px 10px 10px" action="/safetest/xss/loginOut" method="get">
+			<button type="submit">注销</button><br/>
+		</form>
+		<label for="loginStatus">登陆状态：</label>
+		{% if flag == 'success' %}
+			<span id="loginStatus" style="color:blue">{{username}}:登陆成功</span><br/>
+		{% else %}
+			<span id="loginStatus">未登录</span>
+		{% endif %}
+	<span>cookie劫持，HttpOnly标识可以防止</span><br/>
+	</fieldset>
+	
+	<fieldset>
+   		<legend><strong>DOM Based XSS</strong></legend>
+			<label for="inputURL">输入url</label>
+			<input type="text" id="inputURL" style = "width:300px;"></input>
+			<button type="button" onclick="showURL();">确定</button><br/>
+			<label for="showURL">显示url链接：</label>
+			<span id="showURL"></span><br/>
+		<span>通过修改页面的DOM结点形成XSS</span><br/>
+		<span>正常输入：http://www.baidu.com</span><br/>
+		<span>XSS输入：<u>' onclick=alert(/xss/) //</u>   第一个单引号结束href，然后输入onclick事件，双斜杠注释第二个单引号</span>
+	</fieldset>
+</body>
+</html>
